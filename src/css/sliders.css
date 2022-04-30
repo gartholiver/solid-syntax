@@ -1,0 +1,55 @@
+@import "../../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
+@import 'gallery.css';
+
+.quote-ctn {
+	&:before {
+		content: '\201c';
+	}
+
+	&:after {
+		content: '\201d';
+	}
+}
+
+.testimonials {
+	position: static !important;
+}
+
+.gallery {
+	.glide__slide {
+		@apply opacity-50;
+	}
+
+	.glide__slide--visible {
+		@apply opacity-100;
+	}
+
+	.gallery-image {
+		span {
+			@apply opacity-0 transition-opacity duration-300;
+		}
+
+		&:hover span {
+			@apply opacity-100;			
+		}
+	}
+}
+
+.page-slider {
+	.glide__track {
+		@apply overflow-visible;
+		clip-path: inset(-100vw -100vw -100vw 0);
+	}
+
+	.glide__slide {
+		@apply opacity-0 transition-opacity duration-300;
+	}
+
+	.glide__slide--visible {
+		@apply opacity-100;
+	}
+
+	.progress {
+		@apply transition-[width] duration-500;
+	}
+}

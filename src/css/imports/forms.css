@@ -1,0 +1,137 @@
+fieldset {
+	@apply p-0 m-0;
+}
+
+.select-ctn:after {
+	content: '';
+	background-image: url(../img/down-arrow.svg);
+	@apply block w-3 h-full absolute right-3 top-0 bg-contain bg-center bg-no-repeat bg-white;
+}
+
+.select-ctn.label_moved:after {
+	@apply hidden;
+}
+
+.select-ctn select {
+	@apply appearance-none pr-6;
+}
+
+.gform_wrapper {
+	@apply relative;
+
+	.gf_progressbar_wrapper {
+		@apply pb-6 md:pb-8 lg:pb-0 lg:absolute lg:left-0 lg:bottom-0 lg:w-7/12 xl:w-8/12;
+
+		.gf_progressbar_title {
+			@apply mb-3 text-sm;
+		}
+
+		.gf_progressbar {
+			@apply bg-gray;
+		}
+
+		.gf_progressbar_percentage {
+			@apply bg-gray-darker text-gray-darker h-0.5 overflow-hidden;
+
+			span {
+				@apply text-xs;
+			}
+		}
+	}
+
+	.gform_page_footer {
+		@apply flex w-full justify-end;
+	}
+
+	.gform_submission_error {
+		font-size: 1rem !important;
+		text-transform: none !important;
+		@apply font-body font-normal text-red mb-8;
+	}
+
+	.gfield_validation_message {
+		@apply text-red mt-1 text-sm;
+	}
+
+	.gform_confirmation_message {
+		@apply md:text-lg xl:text-xl;
+	}
+}
+
+.gform_fields {
+	@apply grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6;
+
+	.ginput_complex {
+		@apply grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6;
+	}
+
+	.gf_clear_complex {
+		@apply hidden;
+	}
+
+	fieldset {
+		@apply md:col-span-2;
+	}
+
+	.ginput_complex > span,
+	.gfield {
+		@apply relative;
+	}
+
+	input[type='text'],
+	input[type='number'],
+	input[type='tel'],
+	input[type='email'],
+	input[type='search'],
+	select,
+	textarea {
+		@apply block w-full border border-gray-dark px-4 pt-5 pb-1 rounded-lg text-gray-darker;
+		@apply focus:outline-yellow relative z-10 bg-transparent;
+	}
+
+	.gfield_error {
+		input[type='text'],
+		input[type='number'],
+		input[type='tel'],
+		input[type='email'],
+		select,
+		textarea {
+			@apply border border-red;
+		}
+	}
+
+	label {
+		@apply absolute top-0 left-0 w-full h-full pt-3 px-4 text-gray-darker z-0;
+		transition: padding 300ms, font-size 300ms;
+	}
+
+	.label_moved label {
+		@apply pt-1 text-xs;
+	}
+
+	.hidden_label {
+		.gfield_label {
+			@apply hidden;
+		}
+	}
+
+	legend {
+		@apply pb-2;
+	}
+
+	.gform_validation_container {
+		@apply hidden;
+	}
+
+	.clearButton {
+		@apply cursor-pointer hidden absolute right-3 top-0 h-full w-8 items-center justify-center z-20;
+
+		.clearIcon {
+			@apply w-4 h-4;
+		}
+	}
+
+	.label_moved .clearButton {
+		@apply flex;
+	}
+}

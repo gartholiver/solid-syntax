@@ -1,0 +1,30 @@
+<article class="flex items-stretch justify-between bg-gray">
+	<div class="w-8/12 p-6 pr-4 md:pr-8 xl:pr-12 sm:py-10 sm:w-6/12 md:w-8/12 xl:w-7/12 xl:py-12">
+		<h4 class="pb-3 sm:pb-3.5">
+			<a href="{{ post.link }}" aria-label="{{ post.title }}">
+				{{ post.title }}
+			</a>
+		</h4>
+		<div class="pb-4">
+			{{ post.preview.length(15).read_more('') }}
+		</div>
+		<div>
+			<a href="{{ post.link }}" class="inline-flex items-center p-3 text-sm font-semibold text-black uppercase transition-transform duration-200 rounded-sm bg-yellow hover:scale-105">
+				<svg class="w-4 h-auto md:w-5" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M10.5611 2.19237C10.1788 1.79388 10.1918 1.16085 10.5903 0.778462C10.9888 0.396074 11.6218 0.409131 12.0042 0.807625L10.5611 2.19237ZM17.9998 8.5L18.7213 7.80763C19.0926 8.19455 19.0926 8.80545 18.7213 9.19237L17.9998 8.5ZM12.0042 16.1924C11.6218 16.5909 10.9888 16.6039 10.5903 16.2215C10.1918 15.8392 10.1788 15.2061 10.5611 14.8076L12.0042 16.1924ZM16.7329 7.53174C17.2852 7.53174 17.7329 7.97945 17.7329 8.53174C17.7329 9.08402 17.2852 9.53174 16.7329 9.53174V7.53174ZM0.999826 9.53174C0.447542 9.53174 -0.000173569 9.08402 -0.000173569 8.53174C-0.000173569 7.97945 0.447542 7.53174 0.999826 7.53174V9.53174ZM12.0042 0.807625L18.7213 7.80763L17.2782 9.19237L10.5611 2.19237L12.0042 0.807625ZM18.7213 9.19237L12.0042 16.1924L10.5611 14.8076L17.2782 7.80763L18.7213 9.19237ZM16.7329 9.53174H0.999826V7.53174H16.7329V9.53174Z" class="fill-current"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+	<div class="relative w-4/12 sm:w-6/12 md:w-4/12 xl:w-5/12">
+		{% if post.thumbnail %}
+			{% set thumb = post.thumbnail.id %}
+		{% else %}
+			{% set thumb = options.default_post_image %}
+		{% endif %}
+
+		<a href="{{ post.link }}" aria-label="{{ post.title }}">
+			{{ get_image(thumb, 'full', 'absolute inset-0 object-cover w-full h-full') }}
+		</a>
+	</div>
+</article>

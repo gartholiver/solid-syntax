@@ -1,0 +1,52 @@
+/**
+ * Callout - Interactive Split
+ * Custom CSS classes.
+ */
+ .split-label-dummy {
+	@apply text-[6rem] lg:text-[8rem] xl:text-[10rem] 2xl:text-[12rem];
+	@apply sm:whitespace-nowrap font-extrabold uppercase font-display;
+	@apply leading-none text-yellow tracking-wide;
+}
+
+.split-block {
+	@apply absolute text-center cursor-pointer transition-all duration-500 md:px-6 xl:px-8 2xl:px-12;
+
+	&.block-1 {
+		@apply left-0 ml-0;
+	}
+
+	&.block-2 {
+		@apply right-0 mr-0;
+	}
+
+	.split-label {
+		@apply whitespace-nowrap font-extrabold uppercase font-display;
+		@apply transition-all duration-500;
+	}
+
+	&.is-active {
+		@apply justify-self-center w-full;
+
+		.split-label {
+			@apply text-[6rem] lg:text-[8rem] xl:text-[10rem] 2xl:text-[12rem];
+			@apply leading-none text-yellow tracking-wide;
+		}
+	}
+
+	&.is-inactive {
+		@apply md:w-3/12 z-20;
+
+		&.block-1 {
+			@apply md:-ml-6 xl:-ml-8 2xl:-ml-6;
+		}
+	
+		&.block-2 {
+			@apply md:mr-6 xl:-mr-8 2xl:-mr-6;
+		}
+
+		.split-label {
+			@apply text-[1.5rem] lg:text-[1.75rem] xl:text-[2.25rem] 2xl:text-[3rem];
+			@apply text-gray-darker tracking-wider;
+		}
+	}
+}

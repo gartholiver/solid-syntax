@@ -1,0 +1,56 @@
+{% extends "base-sticky.twig" %}
+
+{% block content %}
+	{{ function('wp_enqueue_style', 'origin-gallery') }}
+	{{ function('wp_enqueue_script', 'origin-gallery') }}
+
+	<aside class="order-2 py-16 md:py-24 md:order-1">
+		<div class="container-left">
+			<div class="scroll-down">
+				<a class="scroll-down-link" href="#scroll-down">
+					<svg class="scroll-down-svg" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.982418 8.57208C0.783171 8.38089 0.466656 8.38742 0.275462 8.58666C0.0842677 8.78591 0.0907961 9.10242 0.290043 9.29362L0.982418 8.57208ZM5.72714 13.818L5.38095 14.1788C5.57441 14.3644 5.87987 14.3644 6.07333 14.1788L5.72714 13.818ZM11.1642 9.29362C11.3635 9.10243 11.37 8.78591 11.1788 8.58666C10.9876 8.38742 10.6711 8.38089 10.4719 8.57208L11.1642 9.29362ZM5.25022 12.8966C5.25022 13.1728 5.47408 13.3966 5.75022 13.3966C6.02636 13.3966 6.25022 13.1728 6.25022 12.8966L5.25022 12.8966ZM6.25022 1.45441C6.25022 1.17827 6.02636 0.954409 5.75022 0.954409C5.47408 0.954409 5.25022 1.17827 5.25022 1.45441L6.25022 1.45441ZM0.290043 9.29362L5.38095 14.1788L6.07333 13.4572L0.982418 8.57208L0.290043 9.29362ZM6.07333 14.1788L11.1642 9.29362L10.4719 8.57208L5.38095 13.4572L6.07333 14.1788ZM6.25022 12.8966L6.25022 1.45441L5.25022 1.45441L5.25022 12.8966L6.25022 12.8966Z" class="fill-current"/></svg>
+				</a>
+				<div id="scroll-down"></div>
+			</div>
+
+			<div class="wysiwyg-content">
+				{{ post.content }}
+			</div>
+		</div>
+	</aside>
+	<main id="main" class="order-1 md:pt-24 md:order-2">
+		<div class="sticky right-0 pt-16 pb-0 container-right top-48 md:pb-24 md:pt-12 lg:pt-24">
+			<div class="max-w-lg ml-8 lg:ml-12 xl:ml-auto">
+				<div class="pb-6">
+					<a href="{{ function('get_post_type_archive_link', 'post') }}"
+						title="Back To All Posts"
+						class="inline-flex items-center"
+						x-data="{ hovered: false }"
+						@mouseover="hovered = true"
+						@mouseleave="hovered = false">
+
+						<svg class="w-1.5 h-auto transition-transform transform" :class="hovered ? '-translate-x-0.5' : 'translate-x-0'" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.97512 1.33334L1.33301 5.97546L5.97512 10.6176" stroke="#161616" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+						<span class="pl-3">{{ __('Back To All Posts', 'origin') }}</span>
+					</a>
+				</div>
+
+				<h1 class="pb-3 leading-tight tracking-widest">
+					{{ post.title }}
+				</h1>
+
+				<div class="md:text-lg md:leading-normal">
+					{{ __('Posted On:', 'origin') }} {{ post.date }}
+				</div>
+
+				<div class="pt-8">
+					{% include 'templates/partial/tag-cloud.twig' with { terms: tags, current: current_tags, title: 'Browse by Tag' } %}
+				</div>
+
+				<div class="pt-4 pb-12">
+					{% include 'templates/partial/tag-cloud.twig' with { terms: categories, current: current_cats, title: 'Browse by Category' } %}
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

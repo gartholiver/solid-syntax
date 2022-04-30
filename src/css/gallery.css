@@ -1,0 +1,137 @@
+@import '../../node_modules/lightgallery.js/dist/css/lightgallery.css';
+
+.lg {
+	.lg-toolbar {
+		#lg-download {
+			@apply hidden;
+		}
+
+		#lg-counter {
+			@apply block w-40 text-center mx-auto text-white;
+		}
+
+		.lg-close {
+			@apply text-yellow;
+		}
+	}
+
+	.lg-actions {
+		.lg-icon {
+			@apply bg-yellow text-black rounded-none py-1 px-2 text-base;
+		}
+	}
+
+	.lg-sub-html {
+		@apply pb-16;
+	}
+}
+
+.scroll-down {
+	@apply absolute z-20 transition-opacity duration-500 opacity-70 top-3/4 hover:opacity-100;
+	display: none;
+
+	.scroll-down-link {
+		@apply inline-block bg-white border text-gray-medium;
+	}
+
+	.scroll-down-svg {
+		@apply w-3 h-auto;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.scroll-down {
+		display: block;
+		margin-top: 5rem;
+		margin-left: -3.5vw;
+
+		.scroll-down-link {
+			@apply p-0 border-white;
+			margin-left: 1vw;
+		}
+	}
+}
+
+@media screen and (min-width: 840px) {
+	.scroll-down {
+		margin-top: 3rem;
+		margin-left: -6.85vw;
+
+		.scroll-down-link {
+			@apply p-3 border-gray-medium;
+			margin-left: 1.5vw;
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.scroll-down {
+		margin-top: 5rem;
+		margin-left: -2.8vw;
+
+		.scroll-down-link {
+			@apply p-0 border-white;
+			margin-left: 1vw;
+		}
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.scroll-down {
+		margin-top: 3rem;
+		margin-left: -5.8vw;
+
+		.scroll-down-link {
+			@apply p-3 border-gray-medium;
+			margin-left: 1.5vw;
+		}
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.scroll-down {
+		margin-top: 5rem;
+		margin-left: -2.45vw;
+
+		.scroll-down-link {
+			@apply p-0 border-white;
+			margin-left: 1vw;
+		}
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.scroll-down {
+		margin-top: 2rem;
+		margin-left: -5.5vw;
+
+		.scroll-down-link {
+			@apply p-3 border-gray-medium;
+			margin-left: 1.5vw;
+		}
+	}
+}
+
+@media screen and (min-width: 1536px) {
+	.scroll-down {
+		margin-top: 5rem;
+		margin-left: -2.25vw;
+
+		.scroll-down-link {
+			@apply p-0 border-white;
+			margin-left: 1vw;
+		}
+	}
+}
+
+@media screen and (min-width: 1680px) {
+	.scroll-down {
+		margin-top: 3rem;
+		margin-left: -5vw;
+
+		.scroll-down-link {
+			@apply p-3 border-gray-medium;
+			margin-left: 2vw;
+		}
+	}
+}

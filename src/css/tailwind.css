@@ -1,0 +1,53 @@
+@layer {
+	@font-face {
+		font-display: swap;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 400;
+		src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+	}
+
+	@font-face {
+		font-display: swap;
+		font-family: 'Poppins';
+		font-style: italic;
+		font-weight: 400;
+		src: url('../fonts/Poppins-Italic.ttf') format('truetype');
+	}
+
+	@font-face {
+		font-display: swap;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 600;
+		src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+	}
+
+	@font-face {
+		font-display: swap;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 800;
+		src: url('../fonts/Poppins-ExtraBold.ttf') format('truetype');
+	}
+
+	@font-face {
+		font-display: swap;
+		font-family: 'Heading Now';
+		font-style: normal;
+		font-weight: 800;
+		src: url('../fonts/HeadingNow-37Extrabold.otf') format('opentype');
+	}
+
+	@font-face {
+		font-display: swap;
+		font-family: 'Heading Now';
+		font-style: italic;
+		font-weight: 500;
+		src: url('../fonts/HeadingNow-45MediumItalic.otf') format('opentype');
+	}
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

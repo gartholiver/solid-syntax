@@ -1,0 +1,63 @@
+{% extends "base-sticky.twig" %}
+
+{% block content %}
+	{{ function('wp_enqueue_style', 'origin-gallery') }}
+	{{ function('wp_enqueue_script', 'origin-gallery') }}
+
+	<aside class="order-2 py-16 md:py-24 md:order-1">
+		<div class="container-left">
+			<div class="scroll-down">
+				<a class="scroll-down-link" href="#scroll-down">
+					<svg class="scroll-down-svg" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.982418 8.57208C0.783171 8.38089 0.466656 8.38742 0.275462 8.58666C0.0842677 8.78591 0.0907961 9.10242 0.290043 9.29362L0.982418 8.57208ZM5.72714 13.818L5.38095 14.1788C5.57441 14.3644 5.87987 14.3644 6.07333 14.1788L5.72714 13.818ZM11.1642 9.29362C11.3635 9.10243 11.37 8.78591 11.1788 8.58666C10.9876 8.38742 10.6711 8.38089 10.4719 8.57208L11.1642 9.29362ZM5.25022 12.8966C5.25022 13.1728 5.47408 13.3966 5.75022 13.3966C6.02636 13.3966 6.25022 13.1728 6.25022 12.8966L5.25022 12.8966ZM6.25022 1.45441C6.25022 1.17827 6.02636 0.954409 5.75022 0.954409C5.47408 0.954409 5.25022 1.17827 5.25022 1.45441L6.25022 1.45441ZM0.290043 9.29362L5.38095 14.1788L6.07333 13.4572L0.982418 8.57208L0.290043 9.29362ZM6.07333 14.1788L11.1642 9.29362L10.4719 8.57208L5.38095 13.4572L6.07333 14.1788ZM6.25022 12.8966L6.25022 1.45441L5.25022 1.45441L5.25022 12.8966L6.25022 12.8966Z" class="fill-current"/></svg>
+				</a>
+				<div id="scroll-down"></div>
+			</div>
+
+			<div id="gallery-container" class="grid grid-flow-row grid-cols-1 md:grid-rows-2 md:grid-cols-2">
+				{% for item in post.meta('gallery') %}
+					{% if item.size == 'Wide' %}
+						{% set size = 'md:col-span-2 md:row-span-2 h-56 md:h-64 lg:h-72 xl:h-96' %}
+					{% elseif item.size == 'Tall' %}
+						{% set size = 'md:row-span-2 h-56 md:h-64 lg:h-72 xl:h-96' %}
+					{% else %}
+						{% set size = 'h-56 md:h-32 lg:h-36 xl:h-48' %}
+					{% endif %}
+
+					<a href="{{ item.image.url }}" class="gallery-icon relative flex justify-items-stretch items-stretch {{ size }}" data-sub-html=".this-caption" x-data="{ hovered: false }" @mouseover="hovered = true" @mouseleave="hovered = false">
+						{{ get_image(item.image.id, 'full', 'w-full h-full absolute inset-0 object-cover py-2 md:p-1.5') }}
+
+						<span class="z-10 flex items-center justify-center w-full my-2 md:m-1.5 bg-opacity-50 bg-black-background" :class="hovered ? 'opacity-100' : 'opacity-0'">
+							<svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.4 490.4">
+								<path d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796 s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z" class="fill-white"/>
+							</svg>
+						</span>
+
+						<div class="hidden this-caption">{{ item.caption }}</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</aside>
+	<main id="main" class="order-1 md:pt-24 md:order-2">
+		<div class="sticky right-0 pt-16 pb-0 container-right top-48 md:pb-24 md:pt-12 lg:pt-24">
+			<div class="max-w-lg ml-8 lg:ml-12 xl:ml-auto">
+				<h1 class="pb-6 leading-tight tracking-widest">
+					{{ post.title }}
+				</h1>
+
+				<div class="md:text-lg md:leading-normal">
+					{{ post.description }}
+				</div>
+
+				<div class="pt-10">
+					<a href="{{ post.meta('callout').url }}"
+						aria-label="{{ post.meta('callout').text }}"
+						class="btn btn-primary btn-lg">
+
+						{{ post.meta('callout').text }}
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,48 @@
+<footer id="footer" class="relative pt-2 pb-10 bg-black-background">
+	<div class="container relative z-10 px-6 pb-4 mx-auto">
+		<div class="flex flex-wrap justify-center gap-6 pt-2 pb-8 sm:justify-between lg:pb-12 lg:pt-4 sm:gap-8 xl:gap-12">
+			{# Branding #}
+			<div>
+				<a href="{{ site.url }}" title="{{ site.name }}">
+					<span class="text-xl font-bold text-white xl:text-2xl">
+						{{ site.name }}
+					</span>
+				</a>
+			</div> {# End: Branding #}
+
+			{# Footer Menu #}
+			<div class="grid flex-grow grid-cols-1 gap-6 px-8 text-center sm:text-left sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-8 lg:px-12">
+				{% for item in primary_menu.get_items %}
+					<div class="{{ item.classes | join(' ') }}">
+						<a
+							href="{{ item.link }}"
+							target="{{ item.target }}"
+							title="{{ item.title }}"
+							class="block text-xl font-semibold text-white duration-200 transition-color hover:text-yellow"
+						>
+							{{ item.title }}
+						</a>
+
+						{# Footer Child Menu #}
+						{% if item.children %}
+							<ul class="block pt-3 sub-menu">
+								{% for item in item.children %}
+									<li class="pb-1 {{ item.classes | join(' ') }}">
+										<a
+											href="{{ item.link }}"
+											target="{{ item.target }}"
+											title="{{ item.title }}"
+											class="text-sm text-white hover:text-yellow"
+										>
+											{{ item.title }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %} {# End: Footer Child Menu #}
+					</div>
+				{% endfor %}
+			</div> {# End: Footer Menu #}
+		</div>
+	</div>
+</footer>

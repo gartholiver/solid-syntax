@@ -1,0 +1,36 @@
+{% block html_head_container %}
+
+{% include 'html-header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+
+	<body class="{{ body_class }} overflow-x-hidden grid grid-cols-1 md:grid-cols-2 md:max-h-screen" data-template="base.twig">
+		{{ function( 'wp_body_open' ) }}
+
+		{% block header %}
+			<div class="relative md:col-span-2">
+				{% include 'header.twig' %}
+			</div>
+		{% endblock %}
+		
+		{% block content %}
+			Sorry, no content
+		{% endblock %}
+
+		{% block footer %}
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 219" class="order-3 w-full transform sm:translate-y-8 lg:translate-y-24"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.00400256 0H0V219H1440V0H1440C1439.49 60.0173 1390.68 108.513 1330.54 108.513H1080H900H810H774.504C760.713 108.513 747.57 114.367 738.344 124.618L720 145L701.656 124.618C692.43 114.367 679.287 108.513 665.496 108.513H630H540H360H109.459C49.3223 108.513 0.51206 60.0172 0.00400256 0Z" class="fill-transparent"/></svg>
+
+			<div class="sticky bottom-0 left-0 order-4 transform sm:translate-y-8 md:col-span-2 lg:translate-y-24">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 219" class="absolute left-0 z-20 w-full bottom-full"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.00400256 0H0V219H1440V0H1440C1439.49 60.0173 1390.68 108.513 1330.54 108.513H1080H900H810H774.504C760.713 108.513 747.57 114.367 738.344 124.618L720 145L701.656 124.618C692.43 114.367 679.287 108.513 665.496 108.513H630H540H360H109.459C49.3223 108.513 0.51206 60.0172 0.00400256 0Z" class="fill-black-background"/></svg>
+			</div>
+
+			<div class="order-5 sm:mt-8 lg:mt-24 md:col-span-2">
+				{% include 'footer.twig' %}
+
+				{{ function( 'wp_footer' ) }}
+			</div>
+		{% endblock %}
+	</body>
+</html>

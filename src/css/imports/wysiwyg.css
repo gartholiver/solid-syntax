@@ -1,0 +1,29 @@
+.wysiwyg-content {
+	h1, h2, h3, h4, h5, h6 {
+		@apply my-5;
+	}
+
+	p {
+		@apply mb-4;
+	}
+
+	img {
+		@apply my-4;
+	}
+
+	blockquote {
+		@apply my-5 pl-8 border-l-2 border-yellow md:text-lg;
+	}
+
+	a {
+		@apply underline decoration-black underline-offset-4 hover:decoration-yellow transition-colors duration-200;
+	}
+}
+
+.alignleft {
+	@apply md:mr-4 md:float-left;
+}
+
+.alignright {
+	@apply md:ml-4 md:float-right;
+}
